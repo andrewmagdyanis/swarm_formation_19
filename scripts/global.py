@@ -34,6 +34,8 @@ y_sides = [0,0,0,0]                         # List of integers that indicates sa
 
 # THIRD: Formation related variables (Ones that we added to the global node)
 current_leader = [0,0,0,0]                  # A list of robot's states, when one is raised as 1, it is the current leader
+leader_set_flag = 0                         # Flag raised when one robot is set as leader, to prevent multiple edits
+leader_set_counter = 0                      # Counter to count how many time a leader has been set
 
 #Editing Align Axis Callback Functions (1 for each robot)
 def edit_align_rob1_callback(data):
@@ -77,6 +79,19 @@ def edit_corners_rob4_callback(data):
     shape_corner_robots[3][0] = data.data[0]
     shape_corner_robots[3][1] = data.data[1]
 
+def edit_leader_callback(data):
+    global current_leader, leader_set_flag
+    if leader_set_flag == 0:
+        current_leader = data.data
+        leader_set_flag = 1
+
+def reset_leader_callback():
+    global current_leader, leader_set_flag, leader_set_counter
+    leader_set_flag = 0                 # Clears the flag to allow another leader to be set
+    current_leader = [0,0,0,0]          # Resets the current leader global list
+    leader_set_counter += 1             # Increment to indicate this is another rotation of leader setting
+
+
 def shape_setter():
     global shape_length, shape_sides, x_sides, y_sides
     # Predefining some shape parameters as if
@@ -98,6 +113,10 @@ def global_node_listener():
     rospy.Subscriber('corners_rob2', Int32MultiArray, edit_corners_rob2_callback)
     rospy.Subscriber('corners_rob3', Int32MultiArray, edit_corners_rob3_callback)
     rospy.Subscriber('corners_rob4', Int32MultiArray, edit_corners_rob4_callback)
+
+    #Editing Leader Callback
+    rospy.Subscriber('edit_current_leader', Int32MultiArray, edit_leader_callback)
+    rospy.Subscriber('reset_leader_flag', Int32, reset_leader_callback)
 
 def global_talker():
     # Initialize the node
