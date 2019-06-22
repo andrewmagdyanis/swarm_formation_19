@@ -32,6 +32,9 @@ shape_sides = 0                             # Integer value that indicates no. o
 x_sides = [0,0,0,0]                         # List of integers that indicates saturation Value for X Sides
 y_sides = [0,0,0,0]                         # List of integers that indicates saturation value for Y Sides
 
+# THIRD: Formation related variables (Ones that we added to the global node)
+current_leader = [0,0,0,0]                  # A list of robot's states, when one is raised as 1, it is the current leader
+
 #Editing Align Axis Callback Functions (1 for each robot)
 def edit_align_rob1_callback(data):
     global align_axis
@@ -111,8 +114,10 @@ def global_talker():
     xSides = rospy.Publisher('x_sides', Int32MultiArray, queue_size=10)
     ySides = rospy.Publisher('y_sides', Int32MultiArray, queue_size=10)
 
+    currentLeader = rospy.Publisher('current_leader', Int32MultiArray, queue_size=10)
+
     while not rospy.is_shutdown():
-        # Publish all Data to the Network
+        # Creating Mirrors of current variables to be able to publish them
         align_axis_mirror = Int32MultiArray()
         shape_corner_mirror = Int32MultiArray()
         x_sides_mirror = Int32MultiArray()
@@ -123,13 +128,14 @@ def global_talker():
         x_sides_mirror.data = x_sides
         y_sides_mirror.data = y_sides
 
+        # Publishing all data
         alignPub.publish(align_axis_mirror)
         shapeCorners.publish(shape_corner_mirror)
-
         shapeLength.publish(shape_length)
         shapeSides.publish(shape_sides)
         xSides.publish(x_sides_mirror)
         ySides.publish(y_sides_mirror)
+        currentLeader.publish(current_leader)
 
         # Ensuring that the node subscribes to new data
         global_node_listener()
