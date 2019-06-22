@@ -29,8 +29,8 @@ shape_corner_robots = [ [0,0],[0,0],[0,0],[0,0] ]
 # SECOND: Parameters that are modified from the Pattern Estimation Layer
 shape_length = 0                            # Integer for the required shape side length
 shape_sides = 0                             # Integer value that indicates no. of shape sides
-x_sides = [0,0,0,0]                               # List of integers that indicates saturation Value for X Sides
-y_sides = [0,0,0,0]                               # List of integers that indicates saturation value for Y Sides
+x_sides = [0,0,0,0]                         # List of integers that indicates saturation Value for X Sides
+y_sides = [0,0,0,0]                         # List of integers that indicates saturation value for Y Sides
 
 #Editing Align Axis Callback Functions (1 for each robot)
 def edit_align_rob1_callback(data):
