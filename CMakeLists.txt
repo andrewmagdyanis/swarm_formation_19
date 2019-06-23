@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 2.8.3)
+<<<<<<< HEAD
 project(swarm_formation19)
+=======
+project(swarm_formation_19)
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -7,7 +11,14 @@ project(swarm_formation19)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
+<<<<<<< HEAD
 find_package(catkin REQUIRED)
+=======
+find_package(catkin REQUIRED COMPONENTS
+  rospy
+  std_msgs
+)
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -66,7 +77,11 @@ find_package(catkin REQUIRED)
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
+<<<<<<< HEAD
 #   std_msgs  # Or other packages containing msgs
+=======
+#   std_msgs
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 # )
 
 ################################################
@@ -100,8 +115,13 @@ find_package(catkin REQUIRED)
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
+<<<<<<< HEAD
 #  LIBRARIES swarm_formation19
 #  CATKIN_DEPENDS other_catkin_pkg
+=======
+#  LIBRARIES swarm_formation_19
+#  CATKIN_DEPENDS rospy std_msgs
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 #  DEPENDS system_lib
 )
 
@@ -113,12 +133,20 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
+<<<<<<< HEAD
 # ${catkin_INCLUDE_DIRS}
+=======
+  ${catkin_INCLUDE_DIRS}
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
+<<<<<<< HEAD
 #   src/${PROJECT_NAME}/swarm_formation19.cpp
+=======
+#   src/${PROJECT_NAME}/swarm_formation_19.cpp
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 # )
 
 ## Add cmake target dependencies of the library
@@ -129,7 +157,11 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
+<<<<<<< HEAD
 # add_executable(${PROJECT_NAME}_node src/swarm_formation19_node.cpp)
+=======
+# add_executable(${PROJECT_NAME}_node src/swarm_formation_19_node.cpp)
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -186,7 +218,11 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
+<<<<<<< HEAD
 # catkin_add_gtest(${PROJECT_NAME}-test test/test_swarm_formation19.cpp)
+=======
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_swarm_formation_19.cpp)
+>>>>>>> 94ba6d3b92e3ec84d2fc05e35b77d2343160a617
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
