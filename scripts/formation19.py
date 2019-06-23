@@ -19,6 +19,7 @@ follower1_num=3
 #desired orientation difference:
 Ad2 = 0
 Ad3 = 0
+y=0
 #desired distance:
 Dd=0
 c2c_distance_px=1 # it is published from the user input and if not it by default =1
